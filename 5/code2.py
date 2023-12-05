@@ -32,6 +32,20 @@ print("Mapping Data compiled")
 # Step 2: Compile locations
 TraversalOrder = ["seed-to-soil", "soil-to-fertilizer", "fertilizer-to-water", "water-to-light", "light-to-temperature", "temperature-to-humidity", "humidity-to-location"]
 # We have to track ranges instead of exact numbers for the seeds since the scale is so large
+""" Post-completion explanation
+Instead of storing each seed number like we did in version 1 where it was viable, here we store ranges of seeds
+We apply each of the mapping ranges to each seed range
+Since we know no maps overlap, the maps loop goes over the range loop
+
+If only part of the seed range is captured by a map's range, we translate just the section that got caught
+We then take the uncaught sections and put them back into the Ranges table
+this is so that the next map range will still apply to uncaught areas.
+
+Any translated area gets put into NextRanges instead, a holding ground of already-modified ranges
+Any range that wasn't caught is left unmodified, so we can just extend NextRanges by whatever was left over at the end
+
+For calculating the lowest index, we just take when each range starts, since every range is from X onwards. Rather simple compared to what just came before it
+"""
 LowestIndex = 9e9
 for SeedStart, SeedRange in SeedsToPlant:
 	Ranges = [[SeedStart, SeedRange]]
