@@ -19,9 +19,11 @@ local TileMapping = {}
 local LoopPathTiles = {} --for later
 local ToBecomeInside = {} --for later
 local LineNumber = 1
+local RowLength
 local StartX, StartY
 local line = Input:read("*l")
 while line do
+	RowLength = #line
 	local RowData = {}
 	for i = 1, #line do
 		local char = line:sub(i, i)
@@ -93,14 +95,13 @@ while not(CurX == StartX and CurY == StartY) do
 end
 print("Calculated the initial general loop")
 
-local LeftmostPiece, LeftmostPieceX, LeftmostPieceY, RowLength = nil, 9e9, nil, nil
+local LeftmostPiece, LeftmostPieceX, LeftmostPieceY = nil, 9e9, nil
 for y = 1, #TileMapping do --This loop appears 2 more times later on :)
 	local Row = TileMapping[y]
 	for x = 1, #Row do
 		if LoopPathTiles[y][x] then
 			if x < LeftmostPieceX then
 				LeftmostPiece, LeftmostPieceX, LeftmostPieceY = Row[x], x, y
-				RowLength = #Row
 			end
 		end
 	end
@@ -122,15 +123,15 @@ while not(CurX == LeftmostPieceX and CurY == LeftmostPieceY and HasStarted) do
 		InwardsFacingDirection = ReverseDirection[ClockwiseRotation[InwardsFacingDirection]] --lua logic
 	end
 	PrevMoveDir = ExitDir
-	local NextX, NextY
+	local NextX, NextY = CurX, CurY
 	if ExitDir == NORTH then
-		NextX, NextY = CurX, CurY - 1
+		NextY = CurY - 1
 	elseif ExitDir == EAST then
-		NextX, NextY = CurX + 1, CurY
+		NextX = CurX + 1
 	elseif ExitDir == SOUTH then
-		NextX, NextY = CurX, CurY + 1
+		NextY = CurY + 1
 	elseif ExitDir == WEST then
-		NextX, NextY = CurX - 1, CurY
+		NextX = CurX - 1
 	end
 	-- We are forced to apply it for both the former and latter position because BENDS!
 	if InwardsFacingDirection == NORTH and CurY > #ToBecomeInside then
