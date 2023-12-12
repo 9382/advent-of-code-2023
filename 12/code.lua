@@ -6,6 +6,7 @@ local Total = 0
 while line do
 	local Segments = {}
 	local Data, Groups = line:match("(.+) (.+)")
+	Data = Data:match("^%.*(.+)%.*$"):gsub("%.%.+", ".") --remove excessive periods
 	local GroupData = {}
 	for term in Groups:gmatch("[^,]+") do
 		GroupData[#GroupData+1] = tonumber(term)
@@ -15,20 +16,20 @@ while line do
 	-- Hell, do I even want to do that? Do I just get mega lazy and bruteforce stuff and see what part 2 wants?
 	-- Screw it, bruteforce time, I can't grasp a cool way to do this right now
 	-- some basic optimisation before we bruteforce
-	local FirstNotFixed, _, Char = Data:find("([?#])")
-	if Char == "#" then
-		Data = Data:sub(1, FirstNotFixed-1) .. string.rep("#", GroupData[1]) .. "." .. Data:sub(FirstNotFixed + GroupData[1] + 1, -1)
-	else --Char == "?"
+	local FirstChar = Data:sub(1, 1)
+	if FirstChar == "#" then
+		Data = string.rep("#", GroupData[1]) .. "." .. Data:sub(GroupData[1] + 2, -1)
+	else --FirstChar == "?"
 		for i = 1, GroupData[1] do
-			local FollowingChar = Data:sub(FirstNotFixed+i, FirstNotFixed+i)
+			local FollowingChar = Data:sub(i+1, i+1)
 			if FollowingChar == "#" then -- Everything up to (and past!) current index must be #
 				--[[ broken, e.g. on ?###? 3
-				Data = Data:sub(1, FirstNotFixed-1) .. string.rep("#", GroupData[1]) .. "." .. Data:sub(FirstNotFixed + GroupData[1] + 1, -1)
+				Data = string.rep("#", GroupData[1]) .. "." .. Data:sub(GroupData[1] + 2, -1)
 				table.remove(GroupData, 1)
 				break
 				--]]
 			elseif FollowingChar == "." and i ~= GroupData[1] then -- Everything up to current index must be .
-				Data = Data:sub(1, FirstNotFixed-1) .. string.rep(".", i+1) .. Data:sub(FirstNotFixed + i + 1, -1)
+				Data = string.rep(".", i+1) .. Data:sub(i + 2, -1)
 				break
 			end
 		end
