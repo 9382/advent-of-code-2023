@@ -15,11 +15,9 @@ while line do
 	-- Hell, do I even want to do that? Do I just get mega lazy and bruteforce stuff and see what part 2 wants?
 	-- Screw it, bruteforce time, I can't grasp a cool way to do this right now
 	-- some basic optimisation before we bruteforce
-	--[==[ Literally none of this code works, I am a genius
 	local FirstNotFixed, _, Char = Data:find("([?#])")
 	if Char == "#" then
-		-- Data = Data:sub(1, FirstNotFixed-1) .. string.rep("#", GroupData[1]) .. "." .. Data:sub(FirstNotFixed + GroupData[1] + 1, -1)
-		-- table.remove(GroupData, 1)
+		Data = Data:sub(1, FirstNotFixed-1) .. string.rep("#", GroupData[1]) .. "." .. Data:sub(FirstNotFixed + GroupData[1] + 1, -1)
 	else --Char == "?"
 		for i = 1, GroupData[1] do
 			local FollowingChar = Data:sub(FirstNotFixed+i, FirstNotFixed+i)
@@ -30,12 +28,11 @@ while line do
 				break
 				--]]
 			elseif FollowingChar == "." and i ~= GroupData[1] then -- Everything up to current index must be .
-				-- Data = Data:sub(1, FirstNotFixed-1) .. string.rep(".", i+1) .. Data:sub(FirstNotFixed + i + 1, -1)
-				-- break
+				Data = Data:sub(1, FirstNotFixed-1) .. string.rep(".", i+1) .. Data:sub(FirstNotFixed + i + 1, -1)
+				break
 			end
 		end
 	end
-	--]==]
 	-- and now some cringe bruteforcing
 	local PotentialChanges = {}
 	local IndexableString = {} -- I can't think straight at 6am
