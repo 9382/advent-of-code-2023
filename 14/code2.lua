@@ -80,64 +80,35 @@ local function PerformCycle(RockMap)
 	return RockMap
 end
 
-local function TableMatches(t1, t2)
-	if #t1 ~= #t2 then
-		return false
+local function TurnMapIntoString(RockMap)
+	local reformed = ""
+	for i,row in next,RockMap do
+		reformed = reformed .. table.concat(row, "") .. "\n"
 	end
-	for i = 1, #t1 do
-		local o1, o2 = t1[i], t2[i]
-		if type(o1) ~= type(o2) then
-			return false
-		end
-		if type(o1) == "table" then
-			if not TableMatches(o1, o2) then
-				return false
-			end
-		elseif o1 ~= o2 then
-			return false
-		end
-	end
-	return true
+	return reformed
 end
 
 local function DoCycles(RockMap)
-	local RepeatingSequences = {}
+	local UniqueMaps = {}
+	local MapsByOrder = {}
 	for i = 1, 1000000000 do --thats a lot of cycles
-		if i == 1000 then
-			print("Looking for repeats from this point onwards")
-		end
-		-- not the nicest way to do this but its whatever
-		-- if we wanted to be as efficient as possible under this setup, we would probably want to look for when a unique object appears twice, and use the difference between those
-		-- this requires turning each board into a hash of sorts (some unique but consistent identifier)
-		if i >= 1000 then
-			for diff = 1, 99 do
-				if TableMatches(RepeatingSequences[100], RepeatingSequences[100-diff]) then
-					print("Repeating sequence found with phase", diff)
-					return RepeatingSequences[100 - ((1000000000-i-1)%diff)]
-				end
-			end
-		end
 		local NewRockMap = PerformCycle(RockMap)
-		if TableMatches(NewRockMap, RockMap) then
-			print("Finished cycling in", i, "cycles")
-			return RockMap
+		local NewRockMapIdentifier = TurnMapIntoString(NewRockMap)
+		if UniqueMaps[NewRockMapIdentifier] then
+			local diff = i - UniqueMaps[NewRockMapIdentifier]
+			print("Found a repeat", i, "cycles in (diff of", diff, ")")
+			return MapsByOrder[(#MapsByOrder-diff) + ((1000000000-i+1)%diff)]
 		else
 			RockMap = NewRockMap
-			RepeatingSequences[#RepeatingSequences+1] = RockMap
-			if #RepeatingSequences > 100 then
-				table.remove(RepeatingSequences, 1)
-			end
+			UniqueMaps[NewRockMapIdentifier] = i
+			MapsByOrder[i] = NewRockMap
 		end
 	end
 end
 
 RockMap = DoCycles(RockMap)
 
-local reformed = ""
-for i,row in next,RockMap do
-	reformed = reformed .. table.concat(row, "") .. "\n"
-end
-print(reformed)
+print("Fianl rock map:\n" .. TurnMapIntoString(RockMap))
 
 local Total = 0
 for i,row in next,RockMap do
