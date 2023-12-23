@@ -1,3 +1,8 @@
+--[==[ Post-Completion Explanation
+Not much to mention here; go through each game, split it into its sets, and find the amount of balls for each set
+If any of the numbers is over the limit, it's not valid.
+Lua's basic inbuilt string matching (basically a weaker regex) makes it rather simple to find the numbers
+]==]
 local Input = io.open("input.txt", "r")
 
 local line = Input:read("*l")

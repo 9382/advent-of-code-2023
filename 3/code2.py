@@ -1,3 +1,12 @@
+""" Post-Completion Explanation
+Here we do the inverse of part 1, kinda
+First, we form a grid map, but instead of the original data, each spot contains the entire result of a number if it occupied that space with any digit.
+Then, we re-traverse the original grid, and for every gear (*) we find, we check all 8 squares around the grid.
+If we find a regex match, we add it to our "adjacent" set, and then add up the values in the set after checking all the squares
+
+Here, we use the fact that sets can't contain duplicate values to make our job much easier,
+as in cases where a number was adjacent to a gear more than once are handled automatically by how the set works.
+"""
 Input = open("Input.txt", "r").read()
 # any number adjacent to a symbol, even diagonally
 # diagonally? really? :)

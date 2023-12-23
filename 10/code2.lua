@@ -1,3 +1,19 @@
+--[==[ Post-Completion Explanation
+This script is a right-old mess, and should not be as long as it is.
+It would have probably helped a good deal if I had defined N, E, S, W as 0 to 3 instead of 1 to 4, as it would've allowed rotating via maths instead of table indexing.
+(I do this in later puzzles as its far easier to work with)
+
+We first of all start the same way as part 1 (L70 -> L111), as we want to find out where our pipe loop is (and subsequently where all the dummy pipes are too)
+Note that we figure out what pipe type S is meant to be - this is important for the next step to work, since we probably won't be starting at S again next time
+From this point on, any pipe that isn't part of the main loop is basically treated like a "."
+
+Next, we pick a random piece (in our case, the top-leftmost piece we can find), and we do a second traversal (L113 -> L167)
+This time, we want to track an inside border to our pipe. Since we always picked the top-leftmost piece (an F), we can
+always know which way is guaranteed to be the direction of the "inside", and we rotate this as required as we move around.
+
+Once we've finished the second traversal, we mark all inside spots that weren't the pipe loop itself with an I and then "spread" these Is (L169 -> L191)
+("Spreading" the inside like this, while perfectly valid, isn't the fastest choice, but it'll do fine for us in this case as there isn't much)
+]==]
 local Input = io.open("input.txt", "r")
 
 --[[ Diescting part 2

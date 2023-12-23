@@ -1,3 +1,8 @@
+""" Post-Completion Explanation
+We create a list of every possible term and the digit it equates to (0-9 -> 0-9 and the word versions as required)
+We then .find() each term and store the lowest one for the first term
+We do the same for the last term by flipping the input string (and the terms for the words) and using .find()
+"""
 InputData = open("input.txt", "r").read()
 Total = 0
 # it's a bit lazy and I think not efficient but we can just apply [::-1] to flip the strings for the "last one"

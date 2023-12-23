@@ -1,3 +1,8 @@
+""" Post-Completion Explanation
+Funnilly enough, expanding a grid by a million entires isn't entirely viable.
+Instead, we now figure out how many columns / rows of empty space each distance between galaxy pairs has,
+and adjust our distance accordingly at the end
+"""
 Input = open("input.txt", "r").read()
 
 # First, expand the universe. Then, start doing unit distances

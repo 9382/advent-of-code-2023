@@ -1,3 +1,7 @@
+--[==[ Post-Completion Explanation
+We go through each line of our input and store a map of where the left and right go for each location.
+Then we just apply this map to our starting position of AAA until we reach ZZZ. Not much else to it
+]==]
 local Input = io.open("input.txt", "r")
 
 local DirectionOrder = Input:read("*l")

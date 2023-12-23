@@ -1,3 +1,6 @@
+--[==[ Post-Completion Explanation
+The same as part 1, except instead of checking if we went beyond a limit, we instead store the max of each. Simple.
+]==]
 local Input = io.open("input.txt", "r")
 
 local line = Input:read("*l")

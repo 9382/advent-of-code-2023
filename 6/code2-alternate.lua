@@ -1,3 +1,6 @@
+--[==[ Post-Completion Explanation
+An alternative solution to part 2 which uses maths instead of iteration to get our answer - much faster
+]==]
 local Input = io.open("input.txt", "r")
 
 local Time = tonumber(Input:read("*l"):sub(11, -1):gsub(" ", ""), 10)

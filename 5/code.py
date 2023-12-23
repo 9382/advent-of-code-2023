@@ -1,3 +1,12 @@
+""" Post-Completion Explanation
+First, we compile all of the X-to-Y maps so that we have something to translate our seeds with.
+Since the numbers these values work with are incredibly large (commonly 10 digits), its not feasable for us to store every number to map it to its new destination
+Instead, we store where each range starts, where it leads, and how long it is. This lets us store the entire range in just 3 values
+
+Next, we use the seeds we also collected during our mapping process and run them through each of the maps
+If a seed lands within a range, we translate it by the amount it should translate by. Rather simple here
+Once this is done, we try to find the lowest value post-translation of all the seeds
+"""
 Input = open("input.txt", "r").read()
 
 # Step 1: Compile mapping data

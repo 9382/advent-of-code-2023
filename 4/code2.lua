@@ -1,3 +1,7 @@
+--[==[ Post-Completion Explanation
+Very similar to part 1, except this time, We store how many extra copies of the upcoming cards we have.
+Once we get to each card, we make sure to factor in how many extra copies of the current card we had as well when increasing later cards
+]==]
 local Input = io.open("input.txt", "r")
 
 local line = Input:read("*l")

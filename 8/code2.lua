@@ -1,3 +1,9 @@
+--[==[ Post-Completion Explanation
+We have to get a bit creative here. Since we have to find when every path is currently at a Z-ending node,
+just iterating until this is the case is not viable, as if one took 1000 cycles, and another took 1001, you'd be waiting a LONG time.
+Luckily, we can use the concept of a Lowest Common Multiple between 2 numbers to find the first time both of these conditions meet.
+Therefore, we just track how long each node took individually (this isn't a complex calculation), and then find the LCM of them all
+]==]
 local Input = io.open("input.txt", "r")
 
 local DirectionOrder = Input:read("*l")

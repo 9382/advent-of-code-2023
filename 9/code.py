@@ -1,3 +1,7 @@
+""" Post-Completion Explanation
+Not much to mention here. Once we find a case where no change happened, we pass our gradient upwards. This happens recursively
+Not the best explanation, but I can;t think of a good way to form this into words.
+"""
 Input = open("input.txt", "r").read()
 
 def CalculateNextExpectedChange(Sequence):

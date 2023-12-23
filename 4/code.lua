@@ -1,3 +1,7 @@
+--[==[ Post-Completion Explanation
+We go through each card, split it into its winning numbers and our numbers,
+and then check if any of our numbers are winning. Nothing complex here other than maybe the first match regex
+]==]
 local Input = io.open("input.txt", "r")
 
 local line = Input:read("*l")

@@ -1,3 +1,7 @@
+""" Post-Completion Explanation
+Find each set of numbers, and then check every square around it for a symbol.
+the `i > 0` and `i < len(Rows)-1` checks are just safety to avoid exiting the bounds of our grid
+"""
 Input = open("Input.txt", "r").read()
 # any number adjacent to a symbol, even diagonally
 # diagonally? really? :)

@@ -1,3 +1,8 @@
+""" Post-Completion Explanation
+This one was really fun, and there's an already existing post-completion explanation for the new logic below (L38 -> L51)
+Nothing more to add beyond what it already mentions
+Note that this concept makes a return on day 19
+"""
 Input = open("input.txt", "r").read()
 
 # Step 1: Compile mapping data

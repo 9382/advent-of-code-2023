@@ -1,3 +1,6 @@
+""" Post-Completion Explanation
+A translation of code2.lua into python, done just to test the process. Nothing important to note here
+"""
 Input = open("input.txt", "r").read()
 
 import re
@@ -17,7 +20,7 @@ for line in Lines:
 	for number in re.findall("\d+", Numbers):
 		if number in WinningNumbers:
 			Matches = Matches + 1
-	for i in range(1, Matches+1): #cringe python ranges, this is why lua is better
+	for i in range(1, Matches+1): #cringe python ranges, this is why lua is better (sometimes)
 		BonusCards[CardN+i] = BonusCards[CardN+i] + 1+ExtraCopies
 	Total = Total + 1 + ExtraCopies
 

@@ -1,3 +1,16 @@
+""" Post-Completion Explanation
+There's only really 2 differences here compared to part 1.
+The minor difference is the value of J (now 01 in CreateValueFromCards)
+The major difference is accounting for the fact that Jokers are now Wild Cards when figuring out the hand's rank
+
+Luckily, optimising our cards doesn't turn out to be that hard. Since we want the most optimal hand,
+we would never create more types than we already have, so the amount of unique cards we have easily splits up our possiblities into 5 categories:
+* 1 or 0 unique types (Joker is not considered here): Always a 5 of a kind
+* 2 unique types: Could be a 4 of a kind, but if not, we can definitely resort to Full house guaranteed
+* 3 unique types: Could be a 3 of a kind, but if not, we have a set of 2 pairs guaranteed
+* 4 unique types: Could be a 1 pair, else its just a High card
+* 5 unique types: No jokers and every card is unique, so its a guaranteed High card situation
+"""
 Input = open("input.txt", "r").read()
 """ Hand types			Rank
 5 of a kind				7

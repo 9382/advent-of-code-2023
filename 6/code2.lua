@@ -1,3 +1,7 @@
+--[==[ Post-Completion Explanation
+Somehow simpler than part 2, since its just 1 number we work with for the Time and Distance
+We manage to get away with using the same slow iteration method since our data isnt that absurdly large
+]==]
 local Input = io.open("input.txt", "r")
 
 local Time = tonumber(Input:read("*l"):sub(11, -1):gsub(" ", ""), 10)

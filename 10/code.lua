@@ -1,3 +1,10 @@
+--[==[ Post-Completion Explanation
+Since our goal here is to find the farthest point from the start, and given that this pipe system is linear and looping,
+we can just find how many steps it takes to do a loop and divide that by 2.
+We therefore start at S, pick a random (valid) direction, and traverse from there until we arrive back at S
+
+We figure out our path by having a table of "If we came into this pipe going X, which way do we leave?" (PipeDirectionMapping)
+]==]
 local Input = io.open("input.txt", "r")
 
 -- The paths that the animal can take are quite literally very linear, since there's never a multiple choice.

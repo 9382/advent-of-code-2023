@@ -1,3 +1,8 @@
+--[==[ Post-Completion Explanation
+Once again, rather simple.
+We traverse forwards until we find our first working case and then backwards until we find out first (techincally last) working case
+Then just figure out the difference and go from there
+]==]
 local Input = io.open("input.txt", "r")
 
 local TimeData = Input:read("*l"):sub(11, -1):gmatch("[^ ]+")

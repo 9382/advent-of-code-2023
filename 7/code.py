@@ -1,3 +1,11 @@
+""" Post-Completion Explanation
+First of all, we split each of our cards into its 7 primary groups listed below.
+We figure out which group a card lies in using as little data as we can
+(said data being which groups it already failed to meet, how many unique cards there are, and their frequencies)
+
+Next, we sort each individual group by giving a card a numerical value based on its characters and then using python's .sort() method
+From here, we add up all the values, and thats us done
+"""
 Input = open("input.txt", "r").read()
 """ Hand types			Rank
 5 of a kind				7

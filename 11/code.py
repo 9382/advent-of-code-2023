@@ -1,3 +1,8 @@
+""" Post-Completion Explanation
+First of all, we make a 2D grid using our input data.
+Next, we find every column and row that didn't have data and "expand" them, adding another empty row
+Finally, we find every galaxy pair, and find out its distance on the new expanded grid
+"""
 Input = open("input.txt", "r").read()
 
 # First, expand the universe. Then, start doing unit distances

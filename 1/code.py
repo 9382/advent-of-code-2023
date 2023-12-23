@@ -1,3 +1,6 @@
+""" Post-Completion Explanation
+Rather simple this one, just go through each character, if its a digit, note it appropriately.
+"""
 InputData = open("input.txt", "r").read()
 Total = 0
 for line in InputData.split("\n"):
