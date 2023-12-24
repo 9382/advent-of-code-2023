@@ -1,3 +1,13 @@
+--[==[ Post-Completion Explanation
+We can get a bit creative here with rolling the other 3 directions to make this rather simple to do:
+* We can emulate rolling south by just doing the exact same thing as rolling north, except this time we traverse from the bottom up
+* We can emulate rolling east/west by transposing our matrix, applying a south/north roll, and then transposing the output
+
+Since our rock formation end up cycling every N cycles (we don't know N yet), we need to be looking out for if we match a previous state
+We therefore hash our grid (in this case by just representing it as a string image cause that looks cool and is valid :thumbsup:),
+and then check if we've already seen it before. If we have, we're in a loop, and we can skip to the end of the 1000000000 cycles (thank god)
+using some simple maths and referencing our previously seen rock maps (L107 -> L110)
+]==]
 local Input = io.open("input.txt", "r")
 
 local line = Input:read("*l")

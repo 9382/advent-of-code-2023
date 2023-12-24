@@ -1,3 +1,9 @@
+""" Post-Completion Explanation
+We go through each grid and attempt to find a reflection
+An easy way to tell when we might be expecting a reflection is when 2 rows or 2 columns in a row have the same data.
+From here, we expand on outwards, and if we continue to match the entire way, we've found our reflection.
+We actually support the ability to find both a column and grid reflection, and multiple of them, but I'm not sure if this ever happens in the test cases
+"""
 Input = open("input.txt", "r").read()
 
 def SolveGridReflections(GridRows):

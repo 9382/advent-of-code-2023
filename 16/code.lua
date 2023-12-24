@@ -1,3 +1,8 @@
+--[==[ Post-Completion Explanation
+More grid traversal! Not much thats different here compared to any other grid traversal except for the movement rules
+Since lasers can double-back on themselves, we need to make sure we haven't seen a certain laser case before (HashLaserState)
+Not much to explain here
+]==]
 local Input = io.open("input.txt", "r")
 
 local TileMapping = {}

@@ -1,3 +1,7 @@
+--[==[ Post-Completion Explanation
+The exact same code as part 1 except we try every single starting position, not just the top left
+There really isn't much to add here
+]==]
 local Input = io.open("input.txt", "r")
 
 local TileMapping = {}

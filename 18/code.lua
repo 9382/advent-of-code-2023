@@ -1,3 +1,9 @@
+--[==[ Post-Completion Explanation
+Basically a repeat of day 10 part 2, except with somewhat nicer code this time
+More of that I spreading (a lot more computationally slow here but still valid enough) and walling in
+Since we can dig in any direction, we want to ideally find a start point that means our minimum row and column are 0,
+so we make sure to track how far from our arbitrary origin we've travelled as we go through the instructions
+]==]
 local Input = io.open("input.txt", "r")
 
 local line = Input:read("*l")

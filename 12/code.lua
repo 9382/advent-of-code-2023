@@ -1,3 +1,11 @@
+--[==[ Post-Completion Explanation
+This script is messy, imperfect, and hard to explain in detail, so this'll be a very basic explanation
+This script has been slightly modified since the original solution in the attempt of making something fast enough for past 2, but with no luck
+
+We find each group, attempt to apply some *very trivial* simplifications to reduce the complexity of each group (L94 -> L119)
+We then bruteforce every valid solution (GetSolutionsForSegment) by testing every possible valid scenario
+This isn't optimal at all, but I was unable to think of a better (and reliable) solution, so this is all there is
+]==]
 local Input = io.open("input.txt", "r")
 
 local function L1Copy(t, b)

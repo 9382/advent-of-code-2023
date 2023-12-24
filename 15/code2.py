@@ -1,3 +1,7 @@
+""" Post-Completion Explanation
+Uses the same hashing logic from part 1
+Not much to explain here, the below comments explain mostly what's going on, it's just doing what the prompt wanted explicitly
+"""
 Input = open("input.txt", "r").read()
 
 def PerformHashing(string):

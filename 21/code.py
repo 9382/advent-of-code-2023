@@ -1,3 +1,10 @@
+""" Post-Completion Explanation
+Basic expansion iteration from a start point
+Since we need everything valid on the final step, and since we only move in straight lines,
+we know that if we have an even amount of iterations, every square reached on an even iteration will be in the final result,
+and the same logic applies to odd
+This means we can avoid wasting time iterating from already traversed spots and focus on just moving outwards
+"""
 Input = open("input.txt", "r").read()
 
 Iterations = 64

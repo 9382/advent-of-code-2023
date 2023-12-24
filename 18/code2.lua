@@ -1,4 +1,14 @@
--- [!] INVALID SOLUTION: THIS SCRIPT WILL NOT RUN TO COMPLETION [!]
+-- [!] INVALID SOLUTION: THIS SCRIPT WILL NOT ALWAYS RUN TO COMPLETION AND MAY GENERATE THE WRONG RESULT IN SOME (UNKOWN) CASES [!]
+--[==[ Post-Forfeit Explanation
+The main idea this script revolves around is tracking just where every wall is instead of the entire grid
+We then traverse downwards through each column, noting when we swap from inside to outside and vice versa, and figure out our area that way.
+We could improve ram consumption by storing the range each wall contains, but due to complications with checking 10 million columns,
+making that specific part of the process any slower would probably be a mistake.
+
+Unfortunately, due to reasons that I can't feasably debug (but I have a singular, probably wrong guess for), only on the large dataset with paint
+does it apparently generate the *wrong* solution, being too low apparently. This doesn't happen for any of the other 3 cases I have available to me
+For those reasons, and a lack of motivation, this script is as close as I'll be getting to a day 18 solution
+]==]
 local Input = io.open("input.txt", "r")
 
 --[[ Part 2 comments

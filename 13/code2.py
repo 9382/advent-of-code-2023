@@ -1,3 +1,9 @@
+""" Post-Completion Explanation
+Here we use the same solution as in part 1, except this time, we expect a smudge.
+That means, for every row and column, we find how many "differences" each side has.
+If the entire reflection only ever has 1 difference, then that means it has a singular "smudge" and is our target reflection
+The input data is very generous here as there's guaranteed to just be apparently 1 smudge, which lets us get away with some rather simple code
+"""
 Input = open("input.txt", "r").read()
 
 def DetermineDifference(R1, R2):

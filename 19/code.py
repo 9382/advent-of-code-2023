@@ -1,3 +1,7 @@
+""" Post-Completion Explanation
+A case where I felt classes would probably be a good idea for code readability and just for practice
+Take each input, run it through conditions until they become either accepted or rejected, and calculate the final result - not that complex
+"""
 Input = open("input.txt", "r").read()
 
 import re

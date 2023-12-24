@@ -1,3 +1,9 @@
+""" Post-Completion Explanation
+This is a repeat of day 5 part 2, in which we need to use range manipulation for our very large dataset
+We take each part range and figure out if a condition/rule would split the range, fully match it, or miss it completely, and change accordingly
+
+Since this code is based off of part 1's code, the class structure feels... a bit sloppy/weird? Could be better, but fine as-is
+"""
 Input = open("input.txt", "r").read()
 
 class Range:

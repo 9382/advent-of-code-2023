@@ -1,3 +1,8 @@
+--[==[ Post-Completion Explanation
+We figure out how far something should roll by tracking the last blocking element in each column
+Then, if we encounter a rock, we move it to the first known available position, and adjust the available position as needed
+Once we've done this, we just add up the total, and that's it
+]==]
 local Input = io.open("input.txt", "r")
 
 local line = Input:read("*l")

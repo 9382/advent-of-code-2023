@@ -1,4 +1,7 @@
-# [!] INVALID SOLUTION: THIS SCRIPT WILL GENERATE THE WRONG SOLUTION [!]
+# [!] INVALID SOLUTION: THIS SCRIPT WILL GENERATE THE WRONG SOLUTION IN SOME (UNKNOWN) CASES [!]
+""" Post-Forfeit Explanation
+See code2.lua for the explanation - this is just a python-translated copy of said script to get around memory limits (yes, really)
+"""
 Input = open("input.txt", "r").read()
 
 """ Part 2 comments

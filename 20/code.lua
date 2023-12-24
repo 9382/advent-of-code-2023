@@ -1,3 +1,7 @@
+--[==[ Post-Completion Explanation
+Not much to explain here as we are just following a set of hard-coded instructions as prompted,
+meaning there's not much ambiguity to clear up here
+]==]
 local Input = io.open("input.txt", "r")
 
 print("Collecting instructions...")
